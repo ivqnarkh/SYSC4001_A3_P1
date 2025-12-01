@@ -1,0 +1,55 @@
++------------------------------------------------+
+|Time of Transition |PID | Old State | New State |
++------------------------------------------------+
+|                 0 |  1 |       NEW |     READY |
+|                 0 |  1 |     READY |   RUNNING |
+|               100 |  1 |   RUNNING |     READY |
+|               100 |  1 |     READY |   RUNNING |
+|               110 |  2 |       NEW |     READY |
+|               140 |  1 |   RUNNING |   WAITING |
+|               140 |  2 |     READY |   RUNNING |
+|               170 |  1 |   WAITING |     READY |
+|               170 |  2 |   RUNNING |     READY |
+|               170 |  1 |     READY |   RUNNING |
+|               220 |  3 |       NEW |     READY |
+|               230 |  1 |   RUNNING |     READY |
+|               230 |  1 |     READY |   RUNNING |
+|               310 |  1 |   RUNNING |   WAITING |
+|               310 |  2 |     READY |   RUNNING |
+|               340 |  1 |   WAITING |     READY |
+|               340 |  2 |   RUNNING |     READY |
+|               340 |  1 |     READY |   RUNNING |
+|               360 |  1 |   RUNNING |     READY |
+|               360 |  1 |     READY |   RUNNING |
+|               440 |  1 |   RUNNING |TERMINATED |
+|               440 |  2 |     READY |   RUNNING |
+|               540 |  2 |   RUNNING |   WAITING |
+|               540 |  3 |     READY |   RUNNING |
+|               575 |  2 |   WAITING |     READY |
+|               575 |  3 |   RUNNING |     READY |
+|               575 |  2 |     READY |   RUNNING |
+|               576 |  2 |   RUNNING |     READY |
+|               576 |  2 |     READY |   RUNNING |
+|               676 |  2 |   RUNNING |     READY |
+|               676 |  2 |     READY |   RUNNING |
+|               735 |  2 |   RUNNING |   WAITING |
+|               735 |  3 |     READY |   RUNNING |
+|               770 |  2 |   WAITING |     READY |
+|               770 |  3 |   RUNNING |     READY |
+|               770 |  2 |     READY |   RUNNING |
+|               811 |  2 |   RUNNING |     READY |
+|               811 |  2 |     READY |   RUNNING |
+|               910 |  2 |   RUNNING |TERMINATED |
+|               910 |  3 |     READY |   RUNNING |
+|               960 |  3 |   RUNNING |   WAITING |
+|               985 |  3 |   WAITING |     READY |
+|               985 |  3 |     READY |   RUNNING |
+|              1035 |  3 |   RUNNING |     READY |
+|              1035 |  3 |     READY |   RUNNING |
+|              1105 |  3 |   RUNNING |   WAITING |
+|              1130 |  3 |   WAITING |     READY |
+|              1130 |  3 |     READY |   RUNNING |
+|              1160 |  3 |   RUNNING |     READY |
+|              1160 |  3 |     READY |   RUNNING |
+|              1230 |  3 |   RUNNING |TERMINATED |
++------------------------------------------------+

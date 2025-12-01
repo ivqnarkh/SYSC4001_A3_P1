@@ -1,0 +1,44 @@
++------------------------------------------------+
+|Time of Transition |PID | Old State | New State |
++------------------------------------------------+
+|                 0 |  1 |       NEW |     READY |
+|                 0 |  1 |     READY |   RUNNING |
+|               100 |  2 |       NEW |     READY |
+|               100 |  1 |   RUNNING |     READY |
+|               101 |  2 |     READY |   RUNNING |
+|               200 |  3 |       NEW |     READY |
+|               201 |  2 |   RUNNING |     READY |
+|               202 |  3 |     READY |   RUNNING |
+|               302 |  3 |   RUNNING |     READY |
+|               303 |  3 |     READY |   RUNNING |
+|               403 |  3 |   RUNNING |     READY |
+|               404 |  3 |     READY |   RUNNING |
+|               504 |  3 |   RUNNING |     READY |
+|               505 |  3 |     READY |   RUNNING |
+|               605 |  3 |   RUNNING |     READY |
+|               606 |  3 |     READY |   RUNNING |
+|               656 |  3 |   RUNNING |TERMINATED |
+|               657 |  2 |     READY |   RUNNING |
+|               757 |  2 |   RUNNING |   WAITING |
+|               758 |  1 |     READY |   RUNNING |
+|               797 |  2 |   WAITING |     READY |
+|               808 |  1 |   RUNNING |   WAITING |
+|               809 |  2 |     READY |   RUNNING |
+|               810 |  2 |   RUNNING |     READY |
+|               811 |  2 |     READY |   RUNNING |
+|               843 |  1 |   WAITING |     READY |
+|               911 |  2 |   RUNNING |     READY |
+|               912 |  2 |     READY |   RUNNING |
+|               991 |  2 |   RUNNING |TERMINATED |
+|               992 |  1 |     READY |   RUNNING |
+|              1042 |  1 |   RUNNING |     READY |
+|              1043 |  1 |     READY |   RUNNING |
+|              1143 |  1 |   RUNNING |   WAITING |
+|              1178 |  1 |   WAITING |     READY |
+|              1178 |  1 |     READY |   RUNNING |
+|              1179 |  1 |   RUNNING |     READY |
+|              1180 |  1 |     READY |   RUNNING |
+|              1280 |  1 |   RUNNING |     READY |
+|              1281 |  1 |     READY |   RUNNING |
+|              1300 |  1 |   RUNNING |TERMINATED |
++------------------------------------------------+

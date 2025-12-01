@@ -3,9 +3,10 @@
  * @author Sasisekhar Govind
  * @brief template main.cpp file for Assignment 3 Part 1 of SYSC4001
  * 
+ * @author Ivan Arkhipov 101310636
  */
 
-#include<interrupts_student1_student2.hpp>
+#include<interrupts_101300683_101310636.hpp>
 
 void FCFS(std::vector<PCB> &ready_queue) {
     std::sort( 
@@ -15,6 +16,16 @@ void FCFS(std::vector<PCB> &ready_queue) {
                     return (first.arrival_time > second.arrival_time); 
                 } 
             );
+}
+
+void PriorityQueueSelector(std::vector<PCB> &ready_queue) {
+    std::sort(ready_queue.begin(), ready_queue.end(),
+        [](const PCB &a, const PCB &b) {
+            if (a.priority != b.priority) {
+                return a.priority < b.priority;
+            }
+            return a.arrival_time < b.arrival_time;
+        });
 }
 
 std::tuple<std::string /* add std::string for bonus mark */ > run_simulation(std::vector<PCB> list_processes) {
@@ -63,11 +74,77 @@ std::tuple<std::string /* add std::string for bonus mark */ > run_simulation(std
 
         ///////////////////////MANAGE WAIT QUEUE/////////////////////////
         //This mainly involves keeping track of how long a process must remain in the ready queue
-
+        for (auto it = wait_queue.begin(); it != wait_queue.end(); ) {
+            if (it->io_remaining > 0) {
+                it->io_remaining--;
+            }
+            if (it->io_remaining == 0) {
+                execution_status += print_exec_status(current_time, it->PID, WAITING, READY);
+                it->state = READY;
+                ready_queue.push_back(*it);
+                sync_queue(job_list, *it);
+                it = wait_queue.erase(it);
+            } else {
+                ++it;
+            }
+        }
         /////////////////////////////////////////////////////////////////
 
         //////////////////////////SCHEDULER//////////////////////////////
-        FCFS(ready_queue); //example of FCFS is shown here
+        if (running.PID != -1) {
+            running.remaining_time--;
+            running.cpu_time_used++;
+            running.quantum_used++;
+            
+            //i/o check
+            if (running.io_freq > 0 && running.cpu_time_used >= running.io_freq && running.remaining_time > 0) {
+                execution_status += print_exec_status(current_time, running.PID, RUNNING, WAITING);
+                running.state = WAITING;
+                running.io_remaining = running.io_duration;
+                running.cpu_time_used = 0;
+                wait_queue.push_back(running);
+                sync_queue(job_list, running);
+                idle_CPU(running);
+            }
+            //completion check
+            else if (running.remaining_time == 0) {
+                execution_status += print_exec_status(current_time, running.PID, RUNNING, TERMINATED);
+                terminate_process(running, job_list);
+                idle_CPU(running);
+            }
+            //quantum expires
+            else if (running.quantum_used >= 100) {
+                execution_status += print_exec_status(current_time, running.PID, RUNNING, READY);
+                running.state = READY;
+                running.quantum_used = 0;
+                ready_queue.push_back(running);
+                sync_queue(job_list, running);
+                idle_CPU(running);
+            }
+            //priority preemption check
+            else if (!ready_queue.empty()) {
+                PriorityQueueSelector(ready_queue);
+                if (!ready_queue.empty() && ready_queue[0].priority < running.priority) {
+                    execution_status += print_exec_status(current_time, running.PID, RUNNING, READY);
+                    running.state = READY;
+                    running.quantum_used = 0;
+                    ready_queue.push_back(running);
+                    sync_queue(job_list, running);
+                    idle_CPU(running);
+                }
+            }
+        }
+
+        if (running.PID == -1 && !ready_queue.empty()) {
+            PriorityQueueSelector(ready_queue);
+            running = ready_queue[0];
+            ready_queue.erase(ready_queue.begin());
+            running.state = RUNNING;
+            sync_queue(job_list, running);
+            execution_status += print_exec_status(current_time, running.PID, READY, RUNNING);
+        }
+
+        current_time++;
         /////////////////////////////////////////////////////////////////
 
     }

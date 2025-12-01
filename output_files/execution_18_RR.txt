@@ -1,0 +1,42 @@
++------------------------------------------------+
+|Time of Transition |PID | Old State | New State |
++------------------------------------------------+
+|                 0 |  1 |       NEW |     READY |
+|                 0 |  2 |       NEW |     READY |
+|                 0 |  2 |     READY |   RUNNING |
+|               100 |  2 |   RUNNING |     READY |
+|               101 |  2 |     READY |   RUNNING |
+|               111 |  2 |   RUNNING |   WAITING |
+|               112 |  1 |     READY |   RUNNING |
+|               130 |  3 |       NEW |     READY |
+|               136 |  2 |   WAITING |     READY |
+|               202 |  1 |   RUNNING |   WAITING |
+|               203 |  3 |     READY |   RUNNING |
+|               222 |  1 |   WAITING |     READY |
+|               303 |  3 |   RUNNING |     READY |
+|               304 |  3 |     READY |   RUNNING |
+|               404 |  3 |   RUNNING |     READY |
+|               405 |  3 |     READY |   RUNNING |
+|               505 |  3 |   RUNNING |     READY |
+|               506 |  3 |     READY |   RUNNING |
+|               566 |  3 |   RUNNING |TERMINATED |
+|               567 |  1 |     READY |   RUNNING |
+|               577 |  1 |   RUNNING |     READY |
+|               578 |  1 |     READY |   RUNNING |
+|               658 |  1 |   RUNNING |   WAITING |
+|               659 |  2 |     READY |   RUNNING |
+|               678 |  1 |   WAITING |     READY |
+|               749 |  2 |   RUNNING |     READY |
+|               750 |  2 |     READY |   RUNNING |
+|               770 |  2 |   RUNNING |   WAITING |
+|               771 |  1 |     READY |   RUNNING |
+|               791 |  1 |   RUNNING |     READY |
+|               792 |  1 |     READY |   RUNNING |
+|               795 |  2 |   WAITING |     READY |
+|               862 |  1 |   RUNNING |   WAITING |
+|               863 |  2 |     READY |   RUNNING |
+|               882 |  1 |   WAITING |     READY |
+|               883 |  2 |   RUNNING |TERMINATED |
+|               884 |  1 |     READY |   RUNNING |
+|               894 |  1 |   RUNNING |TERMINATED |
++------------------------------------------------+
